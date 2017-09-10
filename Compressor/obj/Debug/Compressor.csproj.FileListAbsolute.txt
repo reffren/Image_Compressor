@@ -1,0 +1,9 @@
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\bin\Debug\Compressor.exe.config
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\obj\Debug\Compressor.csprojResolveAssemblyReference.cache
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\obj\Debug\Compressor.Form1.resources
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\obj\Debug\Compressor.Properties.Resources.resources
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\obj\Debug\Compressor.csproj.GenerateResource.Cache
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\bin\Debug\Compressor.exe
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\bin\Debug\Compressor.pdb
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\obj\Debug\Compressor.exe
+c:\users\tim\documents\visual studio 2013\Projects\Compressor\Compressor\obj\Debug\Compressor.pdb
