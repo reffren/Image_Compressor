@@ -15,8 +15,10 @@ namespace Compressor
 {
     public partial class Form1 : Form
     {
-        string saveRoute;
-        string filesPath;
+        private string saveRoute;
+        private string filesPath;
+        private long imgQuality;
+        private int imgSize;
 
         Thread thread;
         public Form1()
@@ -25,9 +27,13 @@ namespace Compressor
             btnStart.Enabled = false;
             labelSaved.Visible = false;
             progressBar.Visible = false;
+            trackBarQuality.Maximum = 100;
+            numericUDQuality.Value = 70;
+            trackBarQuality.Value = 70;
+            numericUDSize.Value = 700;
         }
 
-        public void ChangeImage()
+        private void ChangeImage()
         {
             var files = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*jpg*", SearchOption.AllDirectories);
 
@@ -66,6 +72,9 @@ namespace Compressor
                 progressBar.Value = 0;
                 labelSaved.Visible = true;
                 labelFolderForSave.Text = saveRoute;
+                labelRoute.Visible = false;
+                labelSaved.Visible = true;
+                labelFolderForSave.Visible = true;
             });
         }
         private void btnOpen_Click(object sender, EventArgs e)
@@ -76,6 +85,9 @@ namespace Compressor
                 labelRoute.Text = filesPath;
                 saveRoute = filesPath + "\\copressed"; //way to folder where files will be saved
                 btnStart.Enabled = true;
+                labelRoute.Visible = true;
+                labelFolderForSave.Visible = false;
+                labelSaved.Visible = false;
             }
         }
 
@@ -101,7 +113,7 @@ namespace Compressor
             // EncoderParameter object in the array.
             EncoderParameters myEncoderParameters = new EncoderParameters(1);
 
-            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 70L);
+            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, imgQuality);
             myEncoderParameters.Param[0] = myEncoderParameter;
 
             //using (var newImage = ResizeImage(bmp1, 700, 400))
@@ -129,7 +141,7 @@ namespace Compressor
             return null;
         }
 
-        public static Image ResizeImage(Image image, int maxWidth, int maxHeight)
+        private static Image ResizeImage(Image image, int maxWidth, int maxHeight)
         {
             var ratioX = (double)maxWidth / image.Width;
             var ratioY = (double)maxHeight / image.Height;
@@ -145,5 +157,22 @@ namespace Compressor
 
             return newImage;
         }
+
+        private void trackBarQuality_Scroll(object sender, EventArgs e)
+        {
+            numericUDQuality.Text = trackBarQuality.Value.ToString();
+        }
+
+        private void numericUDQuality_ValueChanged(object sender, EventArgs e)
+        {
+            trackBarQuality.Value = Int32.Parse(numericUDQuality.Text);
+            imgQuality = Int32.Parse(numericUDQuality.Text);
+        }
+
+        private void numericUDSize_ValueChanged(object sender, EventArgs e)
+        {
+            imgSize = Int32.Parse(numericUDSize.Text);
+        }
+
     }
 }
